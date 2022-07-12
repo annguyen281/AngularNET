@@ -29,5 +29,17 @@ namespace BackendApp.Controllers
             })
             .ToArray();
         }
+
+        [HttpGet(Name = "GetWeatherForecastV2")]
+        public IEnumerable<WeatherForecast> GetV2()
+        {
+            return Enumerable.Range(1, 7).Select(index => new WeatherForecast
+            {
+                Date = DateTime.Now.AddDays(index),
+                TemperatureC = Random.Shared.Next(-20, 55),
+                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
+            })
+            .ToArray();
+        }
     }
 }
