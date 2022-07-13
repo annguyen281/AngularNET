@@ -30,6 +30,10 @@ namespace BackendApp.Controllers
             .ToArray();
         }
 
+        /// <summary>
+        /// Get Wearther Forecast V2
+        /// </summary>
+        /// <returns></returns>
         [HttpGet(Name = "GetWeatherForecastV2")]
         public IEnumerable<WeatherForecast> GetV2()
         {
