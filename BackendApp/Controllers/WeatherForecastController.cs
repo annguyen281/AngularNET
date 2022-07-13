@@ -32,6 +32,7 @@ namespace BackendApp.Controllers
 
         /// <summary>
         /// Get Wearther Forecast V2
+        /// Returned value {}
         /// </summary>
         /// <returns></returns>
         [HttpGet(Name = "GetWeatherForecastV2")]
