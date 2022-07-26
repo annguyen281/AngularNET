@@ -1,0 +1,36 @@
+name: angularnet_api_cicd
+
+on:
+  pull_request:
+    branches: [ "master" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: 5.0.x
+    - name: Nuget add source Apollo
+      run: dotnet nuget add source --name Apollo "http://nuget-dev.apollo.vn/nuget"
+    - name: Build
+      run: dotnet build --configuration Release
+    - name: Run the Publish
+      run: dotnet publish --configuration Release --no-restore --output ./publish
+
+  deployment:
+    name: "INTE"
+    needs: [build]
+    runs-on: [self-hosted, nzox1]
+    environment: integration
+    concurrency: intergartion
+    steps:
+      - name: IIS Web App Deploy
+        uses: cschleiden/webdeploy-action@v1.1.0
+        with:
+          webSiteName: '[DEV] dev-ats-portal-api.apollo.vn'
+          package: ${{ format('{0}\dist', runner.workspace) }}
