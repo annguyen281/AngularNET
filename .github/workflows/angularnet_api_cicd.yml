@@ -22,7 +22,7 @@ jobs:
     - name: Archive artifact
       uses: montudor/action-zip@v1
       with:
-        args: zip -qq -r publish.zip ./publish/
+        args: zip -q -r publish.zip ./publish/
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v3.1.0
       with:
