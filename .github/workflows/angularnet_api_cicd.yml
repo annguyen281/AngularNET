@@ -19,11 +19,15 @@ jobs:
       run: dotnet build --configuration Release
     - name: Run the Publish
       run: dotnet publish --configuration Release --no-restore --output ./publish
+    - name: Archive artifact
+      uses: montudor/action-zip@v1
+      with:
+        args: zip -qq -r publish.zip ./publish
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v3.1.0
       with:
-        name: drop
-        path: ./publish
+        name: package
+        path: ./publish.zip
 
   deployment:
     name: "INTE"
