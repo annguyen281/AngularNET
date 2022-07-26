@@ -39,7 +39,7 @@ jobs:
     - name: Download artifact
       uses: actions/download-artifact@v3
       with:
-        name: publish
+        name: package
     - name: IIS Web App Deploy
       # You may pin to the exact commit or the version.
       # uses: cschleiden/webdeploy-action@48a2cdaf8aaa2bc762c12948ada3db14faead320
