@@ -1,4 +1,4 @@
-name: angularnet_api_cicd
+name: angularnet_api_deploy_QA_cd
 
 on:
   workflow_dispatch:
@@ -13,7 +13,7 @@ jobs:
     runs-on: [self-hosted, nzox1]
     steps:
     - name: Download artifact
-      uses: actions/download-artifact@v3
+      uses: dawidd6/action-download-artifact@v2.21.1
       with:
           repo: annguyen281/AngularNET
           run_number: ${{ github.event.inputs.runner_id }}
