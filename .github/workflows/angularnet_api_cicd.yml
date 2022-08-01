@@ -35,7 +35,7 @@ jobs:
     needs: [build]
     runs-on: [self-hosted, nzox1]
     environment: integration
-    concurrency: intergartion
+    concurrency: integration
     steps:
     - name: Download artifact
       uses: actions/download-artifact@v3
