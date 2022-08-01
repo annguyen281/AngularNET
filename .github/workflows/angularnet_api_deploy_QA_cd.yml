@@ -16,10 +16,11 @@ jobs:
     - name: Download artifact
       uses: dawidd6/action-download-artifact@v2.21.1
       with:
-          repo: annguyen281/AngularNET
-          run_number: ${{ github.event.inputs.runner_id }}
-          name: package
-          path: ${{ github.workspace }}
+        workflow: angularnet_api_cicd.yml
+        repo: annguyen281/AngularNET
+        run_number: ${{ github.event.inputs.runner_id }}
+        name: package
+        path: ${{ github.workspace }}
     - name: IIS Web App Deploy
       # You may pin to the exact commit or the version.
       # uses: cschleiden/webdeploy-action@48a2cdaf8aaa2bc762c12948ada3db14faead320
