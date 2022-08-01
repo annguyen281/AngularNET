@@ -6,7 +6,7 @@ on:
       runner_number:
         type: string
         required: true
-        name: 'Runner number of AngularNET DEV cicd'
+        description: 'Runner number of AngularNET DEV cicd'
 
 jobs:
   deployment:
