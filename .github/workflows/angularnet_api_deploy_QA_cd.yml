@@ -3,9 +3,10 @@ name: angularnet_api_deploy_QA_cd
 on:
   workflow_dispatch:
     inputs:
-      runner_id:
+      runner_number:
         type: string
         required: true
+        name: 'Runner number of AngularNET DEV cicd'
 
 jobs:
   deployment:
