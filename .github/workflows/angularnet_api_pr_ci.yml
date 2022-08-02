@@ -1,0 +1,33 @@
+name: angularnet_api_pr_ci
+
+on:
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: 5.0.x
+    - name: Nuget add source Apollo
+      run: dotnet nuget add source --name Apollo "http://nuget-dev.apollo.vn/nuget"
+    - name: Build
+      run: dotnet build --configuration Release
+
+  jira-lint:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: cleartax/jira-lint@master
+      name: jira-lint
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        jira-token: ${{ secrets.JIRA_TOKEN }}
+        jira-base-url: https://annguyen281.atlassian.net
+        skip-branches: '^(production-release|master|release\/v\d+)$'
+        skip-comments: true
+        pr-threshold: 1000
