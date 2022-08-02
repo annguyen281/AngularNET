@@ -14,8 +14,6 @@ jobs:
       uses: actions/setup-dotnet@v2
       with:
         dotnet-version: 5.0.x
-    - name: Nuget add source Apollo
-      run: dotnet nuget add source --name Apollo "http://nuget-dev.apollo.vn/nuget"
     - name: Build
       run: dotnet build --configuration Release
 
